@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MSN - Site Moderno</title>
+  <link rel="stylesheet" href="css MSN.css" />
+</head>
+<body>
+  <!-- Cabeçalho com logo -->
+  <header class="site-header">
+    <img src="images/2.jpg" alt="Logo MSN" class="site-logo" />
+    <nav class="nav-links">
+      <a href="#">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#">Ebooks</a>
+      <a href="#">Parcerias</a>
+      <a href="#" id="contatoLink">Contato</a>
+    </nav>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="content-container">
+
+    <!-- Seção Sobre Nós -->
+    <section class="about-section" id="sobre">
+      <h2>Sobre Nós</h2>
+      <p>
+        Somos uma equipe apaixonada por conhecimento, tecnologia e acessibilidade. 
+        Nosso objetivo é democratizar o acesso à informação através de ebooks gratuitos, 
+        parcerias com especialistas e ferramentas modernas de suporte ao usuário. 
+        Acreditamos no poder da educação como um caminho para transformar vidas e criar conexões reais.
+      </p>
+    </section>
+
+    <!-- Cards -->
+    <section class="card-section">
+      <div class="card">
+        <h2>Ebooks Exclusivos</h2>
+        <p>Descubra materiais completos e gratuitos para você aprender com qualidade.</p>
+      </div>
+      <div class="card">
+        <h2>Parcerias Incríveis</h2>
+        <p>Veja com quem estamos construindo esse projeto colaborativo!</p>
+      </div>
+      <div class="card">
+        <h2>Suporte Personalizado</h2>
+        <p>Nosso time está pronto para ajudar você com o que for preciso.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="site-footer">
+    <p>&copy; 2025 MSN. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Botão do Landbot -->
+  <button id="openLandbot" class="landbot-button">
+    <img src="images/suport.png" alt="Abrir Chat" />
+  </button>
+
+  <!-- Modal de Contato -->
+  <div id="contatoModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h2>Contato</h2>
+      <p><strong>Email:</strong> contato@msnsite.com</p>
+      <p><strong>Telefone:</strong> (11) 99999-9999</p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Landbot
+    document.getElementById('openLandbot').addEventListener('click', function () {
+      const script = document.createElement('script');
+      script.src = 'https://static.landbot.io/landbot-3/landbot-3.0.0.js';
+      script.onload = function () {
+        new Landbot.Livechat({
+          configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-2900412-ELJO10QGMRQMIXDJ/index.json',
+        });
+      };
+      document.body.appendChild(script);
+      this.style.display = 'none';
+    });
+
+    // Modal de Contato
+    const contatoLink = document.getElementById('contatoLink');
+    const contatoModal = document.getElementById('contatoModal');
+    const closeModal = document.getElementById('closeModal');
+
+    contatoLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      contatoModal.classList.remove('hidden');
+    });
+
+    closeModal.addEventListener('click', function () {
+      contatoModal.classList.add('hidden');
+    });
+
+    window.addEventListener('click', function (event) {
+      if (event.target === contatoModal) {
+        contatoModal.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
